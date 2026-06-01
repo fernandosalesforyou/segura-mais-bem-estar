@@ -1,46 +1,24 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Header } from "@/components/site/Header";
-import { Hero } from "@/components/site/Hero";
-import { Types } from "@/components/site/Types";
-import { Services } from "@/components/site/Services";
-import { HowWeWork } from "@/components/site/HowWeWork";
-import { ProjectPhase } from "@/components/site/ProjectPhase";
-import { Installation } from "@/components/site/Installation";
-import { Special } from "@/components/site/Special";
-import { ProjectVideos, InspectionVideos } from "@/components/site/VideoBlock";
-import { Inspections, Anchors, NR35 } from "@/components/site/Inspections";
-import { ContactForm } from "@/components/site/ContactForm";
-import { Footer } from "@/components/site/Footer";
-import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
-import { ContactDialogProvider } from "@/components/site/ContactDialog";
+import { InspecaoLinhaVidaPage } from "@/components/site/InspecaoLinhaVidaPage";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "Inspeção de Linha de Vida | Laudo Técnico NR-35 | Engenhar+" },
+      {
+        name: "description",
+        content:
+          "Realizamos inspeção de linha de vida e pontos de ancoragem com emissão de laudos técnicos e adequação à NR-35. Solicite uma avaliação.",
+      },
+      { property: "og:title", content: "Inspeção de Linha de Vida | Laudo Técnico NR-35 | Engenhar+" },
+      {
+        property: "og:description",
+        content:
+          "Inspeção de linha de vida, pontos de ancoragem e sistemas de proteção contra quedas. Laudos técnicos e conformidade com a NR-35.",
+      },
+      { property: "og:url", content: "/" },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+  }),
+  component: InspecaoLinhaVidaPage,
 });
-
-function Index() {
-  return (
-    <ContactDialogProvider>
-      <div className="min-h-screen bg-background">
-      <Header />
-      <main>
-        <Hero />
-        <Types />
-        <Services />
-        <HowWeWork />
-        <ProjectPhase />
-        <Installation />
-        <Special />
-        <ProjectVideos />
-        <Inspections />
-        <InspectionVideos />
-        <Anchors />
-        <NR35 />
-        <ContactForm />
-      </main>
-      <Footer />
-      <FloatingWhatsApp />
-      </div>
-    </ContactDialogProvider>
-  );
-}
