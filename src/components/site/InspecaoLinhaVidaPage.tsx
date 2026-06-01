@@ -369,13 +369,6 @@ function FAQ() {
   );
 }
 
-function FormIntro() {
-  return (
-    <Section tone="white">
-      <SectionTitle eyebrow="Solicite uma Inspeção Técnica" title="Solicite uma Inspeção Técnica" subtitle="Receba uma avaliação completa do seu sistema de linha de vida e mantenha sua empresa em conformidade." />
-    </Section>
-  );
-}
 
 export function InspecaoLinhaVidaPage() {
   return (
