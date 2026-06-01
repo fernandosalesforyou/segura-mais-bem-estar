@@ -1,4 +1,3 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { FloatingWhatsApp } from "@/components/site/FloatingWhatsApp";
@@ -12,28 +11,6 @@ import img2 from "@/assets/install-2.jpg";
 import img3 from "@/assets/install-3.jpg";
 import img4 from "@/assets/install-4.jpg";
 import { useEffect, useState } from "react";
-
-export const Route = createFileRoute("/inspecao-de-linha-de-vida")({
-  head: () => ({
-    meta: [
-      { title: "Inspeção de Linha de Vida | Laudo Técnico NR-35 | Engenhar+" },
-      {
-        name: "description",
-        content:
-          "Realizamos inspeção de linha de vida e pontos de ancoragem com emissão de laudos técnicos e adequação à NR-35. Solicite uma avaliação.",
-      },
-      { property: "og:title", content: "Inspeção de Linha de Vida | Laudo Técnico NR-35 | Engenhar+" },
-      {
-        property: "og:description",
-        content:
-          "Inspeção de linha de vida, pontos de ancoragem e sistemas de proteção contra quedas. Laudos técnicos e conformidade com a NR-35.",
-      },
-      { property: "og:url", content: "/inspecao-de-linha-de-vida" },
-    ],
-    links: [{ rel: "canonical", href: "/inspecao-de-linha-de-vida" }],
-  }),
-  component: InspecaoLinhaVida,
-});
 
 function Hero() {
   const benefits = [
@@ -85,40 +62,23 @@ function Hero() {
 
 function Inspections() {
   const cards = [
-    {
-      title: "Inspeções Técnicas Especializadas",
-      text: "Equipe certificada e qualificada, utilizando práticas rigorosas para garantir que cada linha de vida esteja em conformidade e plenamente funcional.",
-    },
-    {
-      title: "Atendimento às Normas Vigentes",
-      text: "Seguimos rigorosamente a NR-35 e demais normas técnicas aplicáveis a sistemas de proteção contra quedas e pontos de ancoragem.",
-    },
-    {
-      title: "Compromisso com a Segurança",
-      text: "Inspeções técnicas detalhadas para garantir a segurança e a conformidade dos sistemas, com foco na proteção de quem trabalha em altura.",
-    },
+    { title: "Inspeções Técnicas Especializadas", text: "Equipe certificada e qualificada, utilizando práticas rigorosas para garantir que cada linha de vida esteja em conformidade e plenamente funcional." },
+    { title: "Atendimento às Normas Vigentes", text: "Seguimos rigorosamente a NR-35 e demais normas técnicas aplicáveis a sistemas de proteção contra quedas e pontos de ancoragem." },
+    { title: "Compromisso com a Segurança", text: "Inspeções técnicas detalhadas para garantir a segurança e a conformidade dos sistemas, com foco na proteção de quem trabalha em altura." },
   ];
   return (
     <Section tone="white">
-      <SectionTitle
-        eyebrow="Inspeções Técnicas Especializadas"
-        title="Inspeção de Linha de Vida e Pontos de Ancoragem"
-        subtitle="Realizamos inspeções técnicas completas para verificar a integridade, resistência e conformidade dos sistemas de proteção contra quedas."
-      />
+      <SectionTitle eyebrow="Inspeções Técnicas Especializadas" title="Inspeção de Linha de Vida e Pontos de Ancoragem" subtitle="Realizamos inspeções técnicas completas para verificar a integridade, resistência e conformidade dos sistemas de proteção contra quedas." />
       <div className="mt-14 grid gap-6 md:grid-cols-3">
         {cards.map((c, i) => (
           <article key={c.title} className="flex flex-col rounded-2xl border border-border bg-card p-8 shadow-md hover:shadow-xl transition-shadow">
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground text-lg font-bold">
-              {String(i + 1).padStart(2, "0")}
-            </span>
+            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-accent text-accent-foreground text-lg font-bold">{String(i + 1).padStart(2, "0")}</span>
             <h3 className="mt-5 text-xl font-semibold text-primary leading-snug">{c.title}</h3>
             <p className="mt-3 text-base text-muted-foreground leading-relaxed">{c.text}</p>
           </article>
         ))}
       </div>
-      <div className="mt-12 text-center">
-        <CtaButton size="lg" />
-      </div>
+      <div className="mt-12 text-center"><CtaButton size="lg" /></div>
     </Section>
   );
 }
@@ -127,18 +87,9 @@ function YT({ id, title }: { id: string; title: string }) {
   return (
     <div className="overflow-hidden rounded-xl border border-border bg-card shadow-md">
       <div className="aspect-video">
-        <iframe
-          className="h-full w-full"
-          src={`https://www.youtube.com/embed/${id}`}
-          title={title}
-          loading="lazy"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        />
+        <iframe className="h-full w-full" src={`https://www.youtube.com/embed/${id}`} title={title} loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
       </div>
-      <div className="p-4">
-        <p className="font-semibold text-primary">{title}</p>
-      </div>
+      <div className="p-4"><p className="font-semibold text-primary">{title}</p></div>
     </div>
   );
 }
@@ -146,11 +97,7 @@ function YT({ id, title }: { id: string; title: string }) {
 function FieldVideos() {
   return (
     <Section tone="gray">
-      <SectionTitle
-        eyebrow="Inspeções realizadas em campo"
-        title="Casos Reais de Inspeção de Linha de Vida"
-        subtitle="Conheça algumas inspeções realizadas pela Engenhar+ em diferentes segmentos e estruturas."
-      />
+      <SectionTitle eyebrow="Inspeções realizadas em campo" title="Casos Reais de Inspeção de Linha de Vida" subtitle="Conheça algumas inspeções realizadas pela Engenhar+ em diferentes segmentos e estruturas." />
       <div className="mt-12 grid gap-6 md:grid-cols-2">
         <YT id="S0WAqhzKOAY" title="Inspeção em Coberturas" />
         <YT id="0ZdujswYjzA" title="Inspeção em Escadas" />
@@ -170,11 +117,7 @@ function CompleteSolution() {
   ];
   return (
     <Section tone="white">
-      <SectionTitle
-        eyebrow="Inspeção e Certificação"
-        title="Solução Completa para Inspeção e Certificação"
-        subtitle="Da avaliação técnica à emissão do laudo, cuidamos de todas as etapas para manter sua linha de vida em conformidade."
-      />
+      <SectionTitle eyebrow="Inspeção e Certificação" title="Solução Completa para Inspeção e Certificação" subtitle="Da avaliação técnica à emissão do laudo, cuidamos de todas as etapas para manter sua linha de vida em conformidade." />
       <ul className="mt-14 grid gap-6 md:grid-cols-3">
         {cards.map((c) => (
           <li key={c.t} className="flex items-start gap-4 rounded-xl bg-card p-6 shadow-md border border-border hover:shadow-xl hover:-translate-y-0.5 transition-all">
@@ -186,9 +129,7 @@ function CompleteSolution() {
           </li>
         ))}
       </ul>
-      <div className="mt-12 text-center">
-        <CtaButton size="lg" />
-      </div>
+      <div className="mt-12 text-center"><CtaButton size="lg" /></div>
     </Section>
   );
 }
@@ -201,11 +142,7 @@ function HowWeWork() {
   ];
   return (
     <Section tone="white">
-      <SectionTitle
-        eyebrow="Como a Engenhar+ trabalha"
-        title="Metodologia de Inspeção Técnica"
-        subtitle="Nossa metodologia de inspeção permite identificar riscos ocultos, desgastes, falhas estruturais e pontos que precisam de adequação."
-      />
+      <SectionTitle eyebrow="Como a Engenhar+ trabalha" title="Metodologia de Inspeção Técnica" subtitle="Nossa metodologia de inspeção permite identificar riscos ocultos, desgastes, falhas estruturais e pontos que precisam de adequação." />
       <div className="mt-12 grid gap-6 md:grid-cols-3">
         {pillars.map((p, i) => (
           <div key={p.title} className="rounded-xl bg-primary p-8 text-primary-foreground shadow-md hover:shadow-xl transition-shadow">
@@ -229,18 +166,12 @@ function InspectionSteps() {
   ];
   return (
     <Section tone="gray">
-      <SectionTitle
-        eyebrow="Etapas da Inspeção Técnica"
-        title="Como Funciona Nossa Inspeção"
-        subtitle="Cada etapa é planejada para garantir um diagnóstico preciso e um laudo técnico confiável."
-      />
+      <SectionTitle eyebrow="Etapas da Inspeção Técnica" title="Como Funciona Nossa Inspeção" subtitle="Cada etapa é planejada para garantir um diagnóstico preciso e um laudo técnico confiável." />
       <ol className="relative mt-14 mx-auto max-w-3xl">
         <span aria-hidden className="absolute left-5 top-2 bottom-2 w-px bg-accent/40 sm:left-1/2 sm:-translate-x-1/2" />
         {steps.map((s, i) => (
           <li key={s.title} className="relative pl-16 pb-10 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-10 last:pb-0">
-            <span className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground font-bold shadow-md sm:left-1/2 sm:-translate-x-1/2">
-              {i + 1}
-            </span>
+            <span className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-accent-foreground font-bold shadow-md sm:left-1/2 sm:-translate-x-1/2">{i + 1}</span>
             <div className={`${i % 2 === 0 ? "sm:col-start-1 sm:text-right sm:pr-12" : "sm:col-start-2 sm:pl-12"}`}>
               <h3 className="text-lg font-semibold text-primary">{s.title}</h3>
               <p className="mt-1 text-sm text-muted-foreground">{s.text}</p>
@@ -254,45 +185,25 @@ function InspectionSteps() {
 
 function SystemsInspected() {
   const items = [
-    {
-      title: "Linha de Vida Flexível Horizontal",
-      text: "Sistema com cabo de aço aplicado em telhados e estruturas horizontais. Inspecionamos a integridade do cabo, fixações e dispositivos de tensão.",
-    },
-    {
-      title: "Linha de Vida Horizontal",
-      text: "Inspeção de sistemas overhead em cabo de aço ou trilho rígido, com avaliação de ancoragens, batentes e elementos estruturais.",
-    },
-    {
-      title: "Linha de Vida Vertical",
-      text: "Verificação de cabos verticais, trava-quedas deslizantes e fixações em escadas tipo marinheiro e acessos verticais.",
-    },
-    {
-      title: "Pontos de Ancoragem",
-      text: "Avaliação técnica de dispositivos fixos quanto à resistência, integridade estrutural e conformidade normativa.",
-    },
+    { title: "Linha de Vida Flexível Horizontal", text: "Sistema com cabo de aço aplicado em telhados e estruturas horizontais. Inspecionamos a integridade do cabo, fixações e dispositivos de tensão." },
+    { title: "Linha de Vida Horizontal", text: "Inspeção de sistemas overhead em cabo de aço ou trilho rígido, com avaliação de ancoragens, batentes e elementos estruturais." },
+    { title: "Linha de Vida Vertical", text: "Verificação de cabos verticais, trava-quedas deslizantes e fixações em escadas tipo marinheiro e acessos verticais." },
+    { title: "Pontos de Ancoragem", text: "Avaliação técnica de dispositivos fixos quanto à resistência, integridade estrutural e conformidade normativa." },
   ];
   return (
     <Section tone="white">
-      <SectionTitle
-        eyebrow="Tipos de Sistemas Inspecionados"
-        title="Sistemas que Inspecionamos"
-        subtitle="Realizamos inspeções em sistemas novos e já instalados, verificando sua condição de uso e conformidade técnica."
-      />
+      <SectionTitle eyebrow="Tipos de Sistemas Inspecionados" title="Sistemas que Inspecionamos" subtitle="Realizamos inspeções em sistemas novos e já instalados, verificando sua condição de uso e conformidade técnica." />
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((it, i) => (
           <article key={it.title} className="group relative rounded-xl border border-border bg-card p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all">
-            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">
-              0{i + 1}
-            </div>
+            <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-primary-foreground font-bold">0{i + 1}</div>
             <h3 className="text-lg font-semibold text-primary">{it.title}</h3>
             <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{it.text}</p>
             <div className="mt-4 h-1 w-10 rounded bg-accent group-hover:w-20 transition-all" />
           </article>
         ))}
       </div>
-      <div className="mt-12 text-center">
-        <CtaButton size="lg" />
-      </div>
+      <div className="mt-12 text-center"><CtaButton size="lg" /></div>
     </Section>
   );
 }
@@ -305,11 +216,7 @@ function InspectionAdequacy() {
   ];
   return (
     <Section tone="gray">
-      <SectionTitle
-        eyebrow="Inspeção, Adequação e Regularização"
-        title="Inspeção, Adequação e Regularização"
-        subtitle="Mais do que apontar problemas, indicamos o caminho técnico para regularizar e manter sua linha de vida operando com segurança."
-      />
+      <SectionTitle eyebrow="Inspeção, Adequação e Regularização" title="Inspeção, Adequação e Regularização" subtitle="Mais do que apontar problemas, indicamos o caminho técnico para regularizar e manter sua linha de vida operando com segurança." />
       <div className="mt-14 grid gap-6 md:grid-cols-3">
         {cards.map((c) => (
           <div key={c.t} className="rounded-2xl border border-border bg-card p-8 shadow-sm hover:shadow-lg transition-shadow">
@@ -318,9 +225,7 @@ function InspectionAdequacy() {
           </div>
         ))}
       </div>
-      <div className="mt-12 text-center">
-        <CtaButton size="lg" />
-      </div>
+      <div className="mt-12 text-center"><CtaButton size="lg" /></div>
     </Section>
   );
 }
@@ -340,11 +245,7 @@ function Corrections() {
   ];
   return (
     <Section tone="white">
-      <SectionTitle
-        eyebrow="Implementação de Adequações"
-        title="Correções e Adequações Identificadas"
-        subtitle="Quando identificamos não conformidades, nossa equipe pode desenvolver as soluções necessárias para regularizar o sistema e garantir sua segurança."
-      />
+      <SectionTitle eyebrow="Implementação de Adequações" title="Correções e Adequações Identificadas" subtitle="Quando identificamos não conformidades, nossa equipe pode desenvolver as soluções necessárias para regularizar o sistema e garantir sua segurança." />
       <div className="mt-12 grid gap-10 lg:grid-cols-2 items-center">
         <div className="relative overflow-hidden rounded-2xl shadow-xl border border-border bg-card">
           <div className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${i * 100}%)` }}>
@@ -369,9 +270,7 @@ function Corrections() {
           ))}
         </ul>
       </div>
-      <div className="mt-12 text-center">
-        <CtaButton size="lg" />
-      </div>
+      <div className="mt-12 text-center"><CtaButton size="lg" /></div>
     </Section>
   );
 }
@@ -381,12 +280,7 @@ function Segments() {
   const segments = ["Indústria", "Construção Civil", "Agronegócio", "Centros logísticos", "Condomínios", "Empresas com NR-35"];
   return (
     <Section tone="primary">
-      <SectionTitle
-        eyebrow="Projetos para Diferentes Segmentos"
-        title="Inspeção de Linha de Vida para Diferentes Segmentos"
-        subtitle="Realizamos inspeções em indústrias, centros logísticos, condomínios, agronegócio, construção civil e empresas que executam atividades em altura."
-        light
-      />
+      <SectionTitle eyebrow="Projetos para Diferentes Segmentos" title="Inspeção de Linha de Vida para Diferentes Segmentos" subtitle="Realizamos inspeções em indústrias, centros logísticos, condomínios, agronegócio, construção civil e empresas que executam atividades em altura." light />
       <div className="mt-12 grid gap-8 lg:grid-cols-5 lg:items-start">
         <div className="lg:col-span-2 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/5 p-8">
           <h3 className="text-lg font-semibold text-accent">Diferenciais</h3>
@@ -403,9 +297,7 @@ function Segments() {
           <h3 className="text-lg font-semibold text-accent">Segmentos atendidos</h3>
           <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-3">
             {segments.map((s) => (
-              <div key={s} className="rounded-lg border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-3 text-sm font-medium text-primary-foreground">
-                {s}
-              </div>
+              <div key={s} className="rounded-lg border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-3 text-sm font-medium text-primary-foreground">{s}</div>
             ))}
           </div>
         </div>
@@ -417,20 +309,11 @@ function Segments() {
 function NR35Block() {
   return (
     <Section tone="white">
-      <SectionTitle
-        eyebrow="NR-35"
-        title="Sua Linha de Vida Está Regularizada?"
-        subtitle="A NR-35 exige que sistemas de proteção contra quedas sejam submetidos a inspeções periódicas para garantir segurança e conformidade operacional."
-      />
+      <SectionTitle eyebrow="NR-35" title="Sua Linha de Vida Está Regularizada?" subtitle="A NR-35 exige que sistemas de proteção contra quedas sejam submetidos a inspeções periódicas para garantir segurança e conformidade operacional." />
       <div className="mt-12 mx-auto max-w-4xl rounded-2xl border-l-4 border-accent bg-secondary p-10 shadow-md">
         <h3 className="text-2xl font-semibold text-primary">Principais exigências</h3>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
-          {[
-            "Inspeções periódicas obrigatórias",
-            "Laudo técnico atualizado",
-            "Avaliação de pontos de ancoragem",
-            "Profissional habilitado responsável",
-          ].map((e) => (
+          {["Inspeções periódicas obrigatórias", "Laudo técnico atualizado", "Avaliação de pontos de ancoragem", "Profissional habilitado responsável"].map((e) => (
             <li key={e} className="flex gap-3 text-base text-foreground">
               <span className="mt-1 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground text-xs font-bold">✓</span>
               {e}
@@ -440,9 +323,7 @@ function NR35Block() {
         <p className="mt-8 text-base text-muted-foreground">
           A falta de inspeção pode gerar riscos de acidentes, responsabilização legal, multas e interdições.
         </p>
-        <div className="mt-8 text-center">
-          <CtaButton size="lg" />
-        </div>
+        <div className="mt-8 text-center"><CtaButton size="lg" /></div>
       </div>
     </Section>
   );
@@ -450,33 +331,15 @@ function NR35Block() {
 
 function FAQ() {
   const items = [
-    {
-      q: "Quando a inspeção da linha de vida deve ser realizada?",
-      a: "A periodicidade depende das condições de uso e das recomendações normativas, mas inspeções periódicas são indispensáveis para garantir segurança.",
-    },
-    {
-      q: "O que é avaliado durante a inspeção?",
-      a: "São avaliados cabos, ancoragens, componentes, fixações, integridade estrutural e conformidade com as normas aplicáveis.",
-    },
-    {
-      q: "Vocês emitem laudo técnico?",
-      a: "Sim. Após a inspeção, emitimos documentação técnica com os resultados e recomendações.",
-    },
-    {
-      q: "A inspeção atende à NR-35?",
-      a: "Sim. Seguimos rigorosamente os critérios técnicos exigidos para sistemas de proteção contra quedas.",
-    },
-    {
-      q: "Vocês vendem equipamentos?",
-      a: "Não. Atuamos exclusivamente com projetos, inspeção e instalação.",
-    },
+    { q: "Quando a inspeção da linha de vida deve ser realizada?", a: "A periodicidade depende das condições de uso e das recomendações normativas, mas inspeções periódicas são indispensáveis para garantir segurança." },
+    { q: "O que é avaliado durante a inspeção?", a: "São avaliados cabos, ancoragens, componentes, fixações, integridade estrutural e conformidade com as normas aplicáveis." },
+    { q: "Vocês emitem laudo técnico?", a: "Sim. Após a inspeção, emitimos documentação técnica com os resultados e recomendações." },
+    { q: "A inspeção atende à NR-35?", a: "Sim. Seguimos rigorosamente os critérios técnicos exigidos para sistemas de proteção contra quedas." },
+    { q: "Vocês vendem equipamentos?", a: "Não. Atuamos exclusivamente com projetos, inspeção e instalação." },
   ];
   return (
     <Section tone="gray">
-      <SectionTitle
-        eyebrow="FAQ"
-        title="Perguntas Frequentes sobre Inspeção de Linha de Vida"
-      />
+      <SectionTitle eyebrow="FAQ" title="Perguntas Frequentes sobre Inspeção de Linha de Vida" />
       <div className="mt-12 mx-auto max-w-3xl space-y-4">
         {items.map((it) => (
           <details key={it.q} className="group rounded-xl border border-border bg-card p-6 shadow-sm">
@@ -509,16 +372,12 @@ function FAQ() {
 function FormIntro() {
   return (
     <Section tone="white">
-      <SectionTitle
-        eyebrow="Solicite uma Inspeção Técnica"
-        title="Solicite uma Inspeção Técnica"
-        subtitle="Receba uma avaliação completa do seu sistema de linha de vida e mantenha sua empresa em conformidade."
-      />
+      <SectionTitle eyebrow="Solicite uma Inspeção Técnica" title="Solicite uma Inspeção Técnica" subtitle="Receba uma avaliação completa do seu sistema de linha de vida e mantenha sua empresa em conformidade." />
     </Section>
   );
 }
 
-function InspecaoLinhaVida() {
+export function InspecaoLinhaVidaPage() {
   return (
     <ContactDialogProvider>
       <div className="min-h-screen bg-background">
