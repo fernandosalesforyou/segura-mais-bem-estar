@@ -19,6 +19,7 @@ import { Route as OrcamentoRouteImport } from './routes/orcamento'
 import { Route as Nr35RouteImport } from './routes/nr-35'
 import { Route as InstalacaoRouteImport } from './routes/instalacao'
 import { Route as InspecoesRouteImport } from './routes/inspecoes'
+import { Route as InspecaoDeLinhaDeVidaRouteImport } from './routes/inspecao-de-linha-de-vida'
 import { Route as FaseProjetoRouteImport } from './routes/fase-projeto'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as ComoTrabalhamosRouteImport } from './routes/como-trabalhamos'
@@ -74,6 +75,11 @@ const InspecoesRoute = InspecoesRouteImport.update({
   path: '/inspecoes',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InspecaoDeLinhaDeVidaRoute = InspecaoDeLinhaDeVidaRouteImport.update({
+  id: '/inspecao-de-linha-de-vida',
+  path: '/inspecao-de-linha-de-vida',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FaseProjetoRoute = FaseProjetoRouteImport.update({
   id: '/fase-projeto',
   path: '/fase-projeto',
@@ -100,6 +106,7 @@ export interface FileRoutesByFullPath {
   '/como-trabalhamos': typeof ComoTrabalhamosRoute
   '/contato': typeof ContatoRoute
   '/fase-projeto': typeof FaseProjetoRoute
+  '/inspecao-de-linha-de-vida': typeof InspecaoDeLinhaDeVidaRoute
   '/inspecoes': typeof InspecoesRoute
   '/instalacao': typeof InstalacaoRoute
   '/nr-35': typeof Nr35Route
@@ -116,6 +123,7 @@ export interface FileRoutesByTo {
   '/como-trabalhamos': typeof ComoTrabalhamosRoute
   '/contato': typeof ContatoRoute
   '/fase-projeto': typeof FaseProjetoRoute
+  '/inspecao-de-linha-de-vida': typeof InspecaoDeLinhaDeVidaRoute
   '/inspecoes': typeof InspecoesRoute
   '/instalacao': typeof InstalacaoRoute
   '/nr-35': typeof Nr35Route
@@ -133,6 +141,7 @@ export interface FileRoutesById {
   '/como-trabalhamos': typeof ComoTrabalhamosRoute
   '/contato': typeof ContatoRoute
   '/fase-projeto': typeof FaseProjetoRoute
+  '/inspecao-de-linha-de-vida': typeof InspecaoDeLinhaDeVidaRoute
   '/inspecoes': typeof InspecoesRoute
   '/instalacao': typeof InstalacaoRoute
   '/nr-35': typeof Nr35Route
@@ -151,6 +160,7 @@ export interface FileRouteTypes {
     | '/como-trabalhamos'
     | '/contato'
     | '/fase-projeto'
+    | '/inspecao-de-linha-de-vida'
     | '/inspecoes'
     | '/instalacao'
     | '/nr-35'
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
     | '/como-trabalhamos'
     | '/contato'
     | '/fase-projeto'
+    | '/inspecao-de-linha-de-vida'
     | '/inspecoes'
     | '/instalacao'
     | '/nr-35'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '/como-trabalhamos'
     | '/contato'
     | '/fase-projeto'
+    | '/inspecao-de-linha-de-vida'
     | '/inspecoes'
     | '/instalacao'
     | '/nr-35'
@@ -200,6 +212,7 @@ export interface RootRouteChildren {
   ComoTrabalhamosRoute: typeof ComoTrabalhamosRoute
   ContatoRoute: typeof ContatoRoute
   FaseProjetoRoute: typeof FaseProjetoRoute
+  InspecaoDeLinhaDeVidaRoute: typeof InspecaoDeLinhaDeVidaRoute
   InspecoesRoute: typeof InspecoesRoute
   InstalacaoRoute: typeof InstalacaoRoute
   Nr35Route: typeof Nr35Route
@@ -284,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InspecoesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inspecao-de-linha-de-vida': {
+      id: '/inspecao-de-linha-de-vida'
+      path: '/inspecao-de-linha-de-vida'
+      fullPath: '/inspecao-de-linha-de-vida'
+      preLoaderRoute: typeof InspecaoDeLinhaDeVidaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/fase-projeto': {
       id: '/fase-projeto'
       path: '/fase-projeto'
@@ -320,6 +340,7 @@ const rootRouteChildren: RootRouteChildren = {
   ComoTrabalhamosRoute: ComoTrabalhamosRoute,
   ContatoRoute: ContatoRoute,
   FaseProjetoRoute: FaseProjetoRoute,
+  InspecaoDeLinhaDeVidaRoute: InspecaoDeLinhaDeVidaRoute,
   InspecoesRoute: InspecoesRoute,
   InstalacaoRoute: InstalacaoRoute,
   Nr35Route: Nr35Route,
@@ -334,12 +355,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
