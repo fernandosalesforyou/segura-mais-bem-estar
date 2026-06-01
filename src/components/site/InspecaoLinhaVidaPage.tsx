@@ -388,7 +388,7 @@ export function InspecaoLinhaVidaPage() {
           <Segments />
           <NR35Block />
           <FAQ />
-          <FormIntro />
+          
           <ContactForm />
         </main>
         <Footer />
